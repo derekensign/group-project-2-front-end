@@ -1,0 +1,27 @@
+{
+  "name": "group-project-2-front-end",
+  "version": "1.0.0",
+  "description": "For your group project, your team will build Welp, a completely copyright-safe knockoff of a popular site for reviewing local businesses. Your project will consist of 2 repos, 1 for frontend and 1 for backend. The repos can be in the personal github of any team member. Deploy each end to its own heroku app.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/derekensign/group-project-2-front-end.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/derekensign/group-project-2-front-end/issues"
+  },
+  "homepage": "https://github.com/derekensign/group-project-2-front-end#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "path": "^0.12.7",
+    "rowdy-logger": "^1.0.2"
+  }
+}
