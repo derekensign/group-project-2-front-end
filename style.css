@@ -25,7 +25,9 @@ h2 {
     background-image: url('https://art.ngfiles.com/images/575000/575023_tr1o_tr1o-minimalist-glacier.png?f1514348584');
     background-size: cover;
     background-repeat: no-repeat;
-    height: 100vh;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
 }
 
 .navBar {
@@ -76,8 +78,11 @@ h2 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: whitesmoke;
-    opacity: 0.7;  
+    background: rgba(245, 245, 245, 0.438); 
+}
+
+.bizViewContainer {
+    background: rgba(245, 245, 245, 0.438);
 }
 
 .login-form {
@@ -125,6 +130,10 @@ h2 {
 
 .nav-link {
     cursor: pointer;
+}
+
+#bizImage {
+    height: 500px;
 }
 
 .hidden {
