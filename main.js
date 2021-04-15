@@ -10,6 +10,8 @@ const loginContainer = document.querySelector('.loginContainer')
 const searchContainer = document.querySelector('.searchContainer')
 const signupContainer = document.querySelector('.signupContainer')
 const businessesContainer = document.querySelector('.businessesContainer')
+const addBizContainer = document.querySelector('.listBizContainer')
+const bizViewContainer = document.querySelector('.bizViewContainer')
 const allSections = document.querySelectorAll('.section');
 
 
@@ -18,13 +20,6 @@ const showSection = (sectionsToHide, sectionToShow) => {
     sectionsToHide.forEach(section => section.classList.add('hidden'))
 
     sectionToShow.classList.remove('hidden')
-}
-
-const toAddBiz = () => {
-    loginContainer.classList.add('hidden')
-    signupContainer.classList.add('hidden')
-    searchContainer.classList.add('hidden')
-    addbizContainer.classList.remove('hidden')
 }
 
 
@@ -44,4 +39,8 @@ signNav.addEventListener('click', (event) => {
 
 businessNav.addEventListener('click', (event) => {
     showSection(allSections,businessesContainer)
-});
+})
+
+addbizNav.addEventListener('click', (event) => {
+    showSection(allSections,addBizContainer)
+})
