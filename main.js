@@ -1,39 +1,38 @@
+// Nav Links
 const homeNav = document.querySelector('#home-link')
 const businessNav = document.querySelector('#business-link')
 const signNav = document.querySelector('#signup-link')
 const loginNav = document.querySelector('#login-link')
 
+// Sections
 const loginContainer = document.querySelector('.loginContainer')
 const searchContainer = document.querySelector('.searchContainer')
 const signupContainer = document.querySelector('.signupContainer')
+const businessesContainer = document.querySelector('.businessesContainer')
+const allSections = document.querySelectorAll('.section');
 
-const toLogin = () => {
-    loginContainer.classList.remove('hidden')
-    searchContainer.classList.add('hidden')
-    signupContainer.classList.add('hidden')
-}
 
-const toHome = () => {
-    loginContainer.classList.add('hidden')
-    signupContainer.classList.add('hidden')
-    searchContainer.classList.remove('hidden')
-}
+// Show one section
+const showSection = (sectionsToHide, sectionToShow) => {
+    sectionsToHide.forEach(section => section.classList.add('hidden'))
 
-const toSignup = () => {
-    loginContainer.classList.add('hidden')
-    signupContainer.classList.remove('hidden')
-    searchContainer.classList.add('hidden')
+    sectionToShow.classList.remove('hidden')
 }
 
 
+// Event Listeners
 homeNav.addEventListener('click', (event) => {
-    toHome();
+    showSection(allSections,searchContainer)
 })
 
 loginNav.addEventListener('click', (event) => {
-    toLogin();
+    showSection(allSections,loginContainer)
 })
 
 signNav.addEventListener('click', (event) => {
-    toSignup();
+    showSection(allSections,signupContainer)
 })
+
+businessNav.addEventListener('click', (event) => {
+    showSection(allSections,businessesContainer)
+});
