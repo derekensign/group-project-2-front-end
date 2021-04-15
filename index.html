@@ -20,6 +20,7 @@
             <nav class="linkBar">
                 <span id="home-link" class="nav-link">Home</span>
                 <span id="business-link" class="nav-link">Businesses</span>
+                <span id="addbiz-link" class="nav-link">Add a Business</span>
                 <span id="signup-link" class="nav-link">Signup</span>
                 <span id="login-link" class="nav-link">Login</span>
             </nav><br><br><br>
@@ -42,7 +43,7 @@
 
             <form class="login-form">
                 <label for="logEmail">Email</label>
-                <input type="text" id="logEmail"><br>
+                <input type="email" id="logEmail"><br>
 
                 <label for="logPass">Password</label>
                 <input type="password" id="logPass"><br>
@@ -70,12 +71,58 @@
                 <input type="text" id="signName"><br>
                 
                 <label for="signEmail">Email</label>
-                <input type="text" id="signEmail"><br>
+                <input type="email" id="signEmail"><br>
 
                 <label for="signPass">Password</label>
                 <input type="password" id="signPass"><br><br>
 
                 <button type="submit" class="signSubmit">Sign Up</button>
+            </form>
+
+        </div>
+
+        <div class="allBusinessContainer hidden">
+
+        </div>
+
+        <div class="bizViewContainer hidden">
+            <h2>Chili's</h2>
+            <p>Added by Nick</p>
+            <p>Restaurant</p>
+            <img>
+        </div>
+
+        <div class="listBizContainer hidden">
+
+            <h2>Add a Business</h2>
+
+            <form class="addbiz-form">
+                <label for="bizName">Business Name</label>
+                <input type="text" id="bizName"><br>
+                
+                <label for="bizEmail">Address</label>
+                <input type="email" id="bizEmail"><br>
+
+                <label for="bizNumber">Phone Number</label>
+                <input type="text" id="bizNumber"><br>
+
+                <label for="bizDescription">Description</label>
+                <textarea id="bizDescription" placeholder="Enter a description of your business."></textarea><br>
+
+                <label for="bizType">Business Type</label>
+                <select id="bizType">
+                    <option value="">--Choose a Business Type--</option>
+                    <option value="restaurant">Restaurant</option>
+                    <option value="fastfood">Fast Food</option>
+                    <option value="clothing">Clothing</option>
+                    <option value="grocery">Grocery</option>
+                    <option value="service">Service</option>
+                    <option value="automotive">Automotive</option>
+                    <option value="bar">Bar/Lounge</option>
+                    <option value="other">Other</option>
+                </select><br><br>
+
+                <button type="submit" class="bizSubmit">List it!</button>
             </form>
 
         </div>
