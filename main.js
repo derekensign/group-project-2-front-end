@@ -44,3 +44,5 @@ businessNav.addEventListener('click', (event) => {
 addbizNav.addEventListener('click', (event) => {
     showSection(allSections,addBizContainer)
 })
+
+console.log('hello from main');
