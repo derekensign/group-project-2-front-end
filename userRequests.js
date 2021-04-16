@@ -30,7 +30,7 @@ const verifyUser = async() => {
    
             if (response.data.message === 'Authenticated') {
             //    Change Log In State to true.
-            
+            //   Change Nav Bar
             }   
 
             else {
@@ -45,5 +45,29 @@ const verifyUser = async() => {
         console.log(error);
     }
 }
+
+
+// Login User
+
+const loginUser = async(email,password) => {
+    try {
+        const response = await axios.post(`${apiLink}/user/login`, {
+            email,
+            password
+        });
+
+        if (message === 'ok') {
+            localStorage.setItem('userToken', response.data.userToken);
+        }
+
+      
+    }
+
+    catch(error) {
+        console.log(error);
+    }
+}
+
 // createUser('jason','jason@mail.com','12345');
 // verifyUser();
+loginUser('jason@mail.com','12345');
