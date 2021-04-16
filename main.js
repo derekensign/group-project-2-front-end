@@ -3,6 +3,7 @@ const homeNav = document.querySelector('#home-link')
 const businessNav = document.querySelector('#business-link')
 const signNav = document.querySelector('#signup-link')
 const loginNav = document.querySelector('#login-link')
+const logoutNav = document.querySelector('#logout-link')
 const addbizNav = document.querySelector('#addbiz-link')
 
 // Sections
@@ -44,5 +45,19 @@ businessNav.addEventListener('click', (event) => {
 addbizNav.addEventListener('click', (event) => {
     showSection(allSections,addBizContainer)
 })
+
+logoutNav.addEventListener('click', (event) => {
+    logoff()
+    showSection(allSections,searchContainer)
+})
+
+// logout function
+const logoff = () => {
+    localStorage.clear()
+}
+
+
+
+
 
 console.log('hello from main');
