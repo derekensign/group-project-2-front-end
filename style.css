@@ -54,8 +54,7 @@ h2 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: whitesmoke;
-    opacity: 0.7;
+    background: rgba(245, 245, 245, 0.671);
 }
 
 .signupContainer {
@@ -66,8 +65,7 @@ h2 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: whitesmoke;
-    opacity: 0.7;    
+    background: rgba(245, 245, 245, 0.671);   
 }
 
 .listBizContainer {
@@ -78,11 +76,15 @@ h2 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: rgba(245, 245, 245, 0.438); 
+    background: rgba(245, 245, 245, 0.671); 
 }
 
 .bizViewContainer {
-    background: rgba(245, 245, 245, 0.438);
+    background: rgba(245, 245, 245, 0.671);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
 }
 
 .login-form {
@@ -133,7 +135,40 @@ h2 {
 }
 
 #bizImage {
-    height: 500px;
+    height: 350px;
+}
+
+.reviewArea {
+    border-style: double;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.singleReview {
+    border-style: double;
+    width: 50%;
+}
+
+.basicInfo {
+    border-style: double;
+}
+
+.basicInfo p {
+    font-size: 12pt;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.bizOverlay {
+    width: 400px;
+    position: absolute;
+    margin-top: 150px;
+    background: rgba(192, 192, 192, 0.651)
+}
+
+#storeInfo {
+    width: 50%;
 }
 
 .hidden {
