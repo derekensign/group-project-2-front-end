@@ -1,6 +1,5 @@
 const apiLink = 'http://localhost:3001';
 
-
 // Creates a user token to be set in local storage
 const createUser = async( name, email, password) => {
     try {
@@ -70,4 +69,4 @@ const loginUser = async(email,password) => {
 
 // createUser('jason','jason@mail.com','12345');
 // verifyUser();
-loginUser('jason@mail.com','12345');
+// loginUser('jason@mail.com','12345');
