@@ -1,5 +1,26 @@
 const apiLink = 'http://localhost:3001';
 
+const navBar = document.querySelector('.linkBar')
+const navBarLogged = document.querySelector('.loggedLinkBar')
+
+// Nav Links
+const homeNav = document.querySelectorAll('.homeTwin')
+const businessNav = document.querySelectorAll('.bizTwin')
+const signNav = document.querySelector('#signup-link')
+const loginNav = document.querySelector('#login-link')
+const logoutNav = document.querySelector('#logout-link')
+const addbizNav = document.querySelector('#addbiz-link')
+
+// Sections
+const loginContainer = document.querySelector('.loginContainer')
+const searchContainer = document.querySelector('.searchContainer')
+const signupContainer = document.querySelector('.signupContainer')
+const businessesContainer = document.querySelector('.businessesContainer')
+const addBizContainer = document.querySelector('.listBizContainer')
+const bizViewContainer = document.querySelector('.bizViewContainer')
+const allSections = document.querySelectorAll('.section');
+const allNav = document.querySelectorAll('.nav')
+
 // Creates a user token to be set in local storage
 const createUser = async( name, email, password) => {
     try {
@@ -13,6 +34,7 @@ const createUser = async( name, email, password) => {
     }
     catch(error) {
         console.log(error);
+        alert(error)
     }
 };
 
@@ -28,14 +50,17 @@ const verifyUser = async() => {
             });
    
             if (response.data.message === 'Authenticated') {
+                showSection(allNav, navBarLogged)
             //    Change Log In State to true.
             //   Change Nav Bar
             }   
 
             else {
-
+                showSection(allNav, navBar)
             }
     
+        } else {
+            showSection(allNav, navBar)
         }
       
     }
@@ -55,7 +80,7 @@ const loginUser = async(email,password) => {
             password
         });
 
-        if (message === 'ok') {
+        if (response.data.message === 'ok') {
             localStorage.setItem('userToken', response.data.userToken);
         }
 
@@ -64,6 +89,7 @@ const loginUser = async(email,password) => {
 
     catch(error) {
         console.log(error);
+        alert(error);
     }
 }
 
