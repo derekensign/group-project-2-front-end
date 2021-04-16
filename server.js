@@ -17,7 +17,7 @@ app.get('/userRequests.js', (req, res) => {
     replaceinfile({
       files: filepath,
       from: 'http://localhost:3001',
-      to: 'https://welp-2021-back-end.herokuapp.com/'
+      to: 'https://welp-2021-back-end.herokuapp.com'
     })
   }
   res.sendFile(filepath)
