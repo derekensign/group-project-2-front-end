@@ -136,6 +136,27 @@ h2 {
 
 #bizImage {
     height: 350px;
+    width: 100%;
+    
+    object-fit: cover;
+}
+
+.bizOverlay2 {
+    padding: 20px;
+}
+
+.bizOverlay2 > div {
+    position: relative;
+    width: 600px;
+    margin: 0 auto;
+}
+
+.bizOverlay {
+    position: absolute;
+    background: rgba(192, 192, 192, 0.651);
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
 }
 
 .reviewArea {
@@ -160,12 +181,7 @@ h2 {
 
 }
 
-.bizOverlay {
-    width: 400px;
-    position: absolute;
-    margin-top: 150px;
-    background: rgba(192, 192, 192, 0.651)
-}
+
 
 #storeInfo {
     width: 50%;
