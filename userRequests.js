@@ -1,24 +1,73 @@
 const apiLink = 'http://localhost:3001';
 
-console.log('hello from user')
 
-const getBusinesses = async () => {
+// Creates a user token to be set in local storage
+const createUser = async( name, email, password) => {
     try {
-        const response = await axios.get(`${apiLink}/business`);
-        const businesses = response.data.businesses;
+        const response = await axios.post(`${apiLink}/user`, {
+            name,
+            email,
+            password
+        });
 
-        return businesses;
+        localStorage.setItem('userToken', response.data.userToken);
     }
     catch(error) {
+        console.log(error);
+    }
+};
 
+// Verify user 
+const verifyUser = async() => {
+    const userToken = localStorage.getItem('userToken');
+    try {
+        if (userToken !== null) {
+            const response = await axios.get(`${apiLink}/user/verify`, {
+                headers: {
+                    authorization: 'Bearer ' + userToken 
+                }
+            });
+   
+            if (response.data.message === 'Authenticated') {
+            //    Change Log In State to true.
+            //   Change Nav Bar
+            }   
+
+            else {
+
+            }
+    
+        }
+      
+    }
+
+    catch(error) {
+        console.log(error);
     }
 }
 
 
-const createTable = (parentElement, businesses) => {
-    console.log(parentElement)
+// Login User
 
-    const table = document.createElement('table');
+const loginUser = async(email,password) => {
+    try {
+        const response = await axios.post(`${apiLink}/user/login`, {
+            email,
+            password
+        });
 
-    parentElement.append(table)
+        if (message === 'ok') {
+            localStorage.setItem('userToken', response.data.userToken);
+        }
+
+      
+    }
+
+    catch(error) {
+        console.log(error);
+    }
 }
+
+// createUser('jason','jason@mail.com','12345');
+// verifyUser();
+loginUser('jason@mail.com','12345');
