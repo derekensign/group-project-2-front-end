@@ -17,7 +17,7 @@ app.get('/userRequests.js', (req, res) => {
     replaceinfile({
       files: filepath,
       from: 'http://localhost:3001',
-      to: ''
+      to: 'https://welp-2021-back-end.herokuapp.com/'
     })
   }
   res.sendFile(filepath)
@@ -25,13 +25,6 @@ app.get('/userRequests.js', (req, res) => {
 
 app.get('/businessRequests.js', (req, res) => {
   const filepath = path.join(__dirname, 'businessRequests.js')
-  if (process.env.NODE_ENV === 'production') {
-    replaceinfile({
-      files: filepath,
-      from: 'http://localhost:3001',
-      to: ''
-    })
-  }
   res.sendFile(filepath)
 })
 
@@ -39,13 +32,6 @@ app.get('/businessRequests.js', (req, res) => {
 
 app.get('/main.js', (req, res) => {
   const filepath = path.join(__dirname, 'main.js')
-  if (process.env.NODE_ENV === 'production') {
-    replaceinfile({
-      files: filepath,
-      from: 'http://localhost:3001',
-      to: ''
-    })
-  }
   res.sendFile(filepath)
 })
 
