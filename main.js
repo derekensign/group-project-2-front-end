@@ -1,3 +1,5 @@
+
+
 // Nav Links
 const homeNav = document.querySelector('#home-link')
 const businessNav = document.querySelector('#business-link')
@@ -22,8 +24,6 @@ const showSection = (sectionsToHide, sectionToShow) => {
     sectionToShow.classList.remove('hidden')
 }
 
-
-
 // Event Listeners
 homeNav.addEventListener('click', (event) => {
     showSection(allSections,searchContainer)
@@ -39,6 +39,8 @@ signNav.addEventListener('click', (event) => {
 
 businessNav.addEventListener('click', (event) => {
     showSection(allSections,businessesContainer)
+
+    getAllBusinesses()
 })
 
 addbizNav.addEventListener('click', (event) => {
@@ -46,3 +48,41 @@ addbizNav.addEventListener('click', (event) => {
 })
 
 console.log('hello from main');
+
+const getAllBusinesses = async (req,res) => {
+
+    // replace searchResults below to clear out previous getallBusinesses results
+    while(businessesContainer.firstChild !== null) {
+        businessesContainer.removeChild(businessesContainer.lastChild)
+    }
+
+    let allBusinesses = await axios.get(`${apiLink}/business`)
+
+    console.log(allBusinesses)
+
+    for(let i = 0; i < allBusinesses.data.businesses.length; i++) {
+
+        let newDiv = document.createElement('div')
+        let newName = document.createElement('h3')
+        let newImage = document.createElement('img')
+        let newType = document.createElement('h4')
+
+
+        newDiv.appendChild(newImage)
+        newDiv.appendChild(newName)
+        newDiv.appendChild(newType)
+
+        newName.innerText = allBusinesses.data.businesses[i].name
+        newType.innerText = allBusinesses.data.businesses[i].category
+        newImage.src = allBusinesses.data.businesses[i].image
+
+        newDiv.classList.add("bizTile")
+        newDiv.addEventListener('click', async (event) => {
+            let oneBusiness = await getOneBusiness(allBusinesses.data.businesses[i].id)
+            console.log(oneBusiness)
+        })
+        console.log(newDiv)
+        businessesContainer.appendChild(newDiv)
+
+    }
+}
