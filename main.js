@@ -33,7 +33,7 @@ const showSection = (sectionsToHide, sectionToShow) => {
 // Event Listeners
 homeNav.forEach((nav) => {
     nav.addEventListener('click', (event) => {
-        showSection(allSections,searchContainer)
+        getAllBusinesses()
     }) 
 })
 
@@ -58,10 +58,10 @@ addbizNav.addEventListener('click', (event) => {
 })
 
 
-
+// get all businesses and assign each business an event listener
 const getAllBusinesses = async (req,res) => {
 
-    // replace searchResults below to clear out previous getallBusinesses results
+   
     while(businessesContainer.firstChild !== null) {
         businessesContainer.removeChild(businessesContainer.lastChild)
     }
@@ -90,6 +90,11 @@ const getAllBusinesses = async (req,res) => {
         newDiv.addEventListener('click', async (event) => {
             let oneBusiness = await getOneBusiness(allBusinesses.data.businesses[i].id)
             console.log(oneBusiness)
+
+            bizViewContainer.removeChild(bizViewContainer.firstChild)
+
+            showSection(allSections, bizViewContainer)
+            
         })
         console.log(newDiv)
         businessesContainer.appendChild(newDiv)
