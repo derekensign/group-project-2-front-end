@@ -109,7 +109,21 @@ const createBizView = (oneBusiness) => {
     const phoneNumber = document.createElement('p');
     const storeInfo = document.createElement('p');
     const ownerName = document.createElement('h3');
+    const avgRating = document.createElement('div');
 
+
+    if (oneBusiness.reviews.length) {
+        const ratedReviews = oneBusiness.reviews.filter(review => !isNaN(review.rating));
+        const avgRatings = ratedReviews.reduce((acc,curr) => {
+            return acc + parseInt(curr.rating)}
+            ,0);
+        
+     
+        generateStars(avgRating,Math.ceil(avgRatings/ratedReviews.length));
+    }
+    else {
+        avgRating.innerHTML = '<p>No Ratings Yet!</p>';
+    }
 
     bizOverlayTwo.classList.add('bizOverlay2');
     bizImage.setAttribute('id','bizImage');
@@ -125,7 +139,7 @@ const createBizView = (oneBusiness) => {
 
     reviewForm.setAttribute('biz-id', oneBusiness.business.id);
 
-    innerDiv.append(bizImage,bizOverlay,ownerName,address, phoneNumber, storeInfo);
+    innerDiv.append(bizImage,bizOverlay,ownerName,address, phoneNumber, storeInfo, avgRating);
     bizOverlayTwo.append(innerDiv);
     document.querySelector('.basicInfo').innerHTML = '';
     document.querySelector('.basicInfo').append(bizOverlayTwo);
@@ -145,7 +159,7 @@ const createReviewsView = reviews => {
     comment.innerText = reviews.comment;
     headline.innerText = reviews.headline;
     image.src = reviews.image;
-    generateStars(ratingDiv,reviews);
+    generateStars(ratingDiv,reviews.rating);
     reviewDiv.classList.add('one-review');
     
     reviewDiv.append(name, headline, comment, ratingDiv);
@@ -156,14 +170,14 @@ const createReviewsView = reviews => {
 };
 
 
-const generateStars = (parentDiv, reviews) => {
-    for (let i = 0; i < parseInt(reviews.rating); i++) {
+const generateStars = (parentDiv, rating) => {
+    for (let i = 0; i < parseInt(rating); i++) {
         const ratingStar = document.createElement('span');
         ratingStar.classList.add('fas', 'fa-star');
         parentDiv.append(ratingStar);
     }
 
-    for (let i = 0; i < ( 5 - parseInt(reviews.rating)); i++) {
+    for (let i = 0; i < ( 5 - parseInt(rating)); i++) {
         const ratingStar = document.createElement('span');
         ratingStar.classList.add('far',  'fa-star');
         parentDiv.append(ratingStar)
