@@ -169,7 +169,7 @@ const createReviewsView = reviews => {
     
     userImage.src = !checkUrl(userImageInfo) ? 'https://www.pngitem.com/pimgs/m/30-307416_profile-icon-png-image-free-download-searchpng-employee.png': reviews.user.image;
 
-
+    
     name.innerText = reviews.user.name;
     comment.innerText = reviews.comment;
 
