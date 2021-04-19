@@ -250,6 +250,12 @@ textarea {
     margin-bottom: 20px;
 }
 
+.one-review img {
+    margin-top: 20px;
+    width: 50%;
+   
+}
+
 .all-reviews {
     width: 80%;
 }

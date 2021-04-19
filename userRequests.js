@@ -22,6 +22,7 @@ const allSections = document.querySelectorAll('.section');
 const allNav = document.querySelectorAll('.nav');
 const allBusinessesContainer = document.querySelector('.allBusinesses');
 const allReviewsContainer = document.querySelector('.all-reviews');
+const reviewArea = document.getElementById('reviewArea');
 
 // Forms
 const loginForm = document.querySelector('.login-form')
@@ -61,21 +62,25 @@ const verifyUser = async() => {
    
             if (response.data.message === 'Authenticated') {
                 showSection(allNav, navBarLogged)
+                reviewArea.classList.remove('hidden');
             //    Change Log In State to true.
             //   Change Nav Bar
             }   
 
             else {
                 showSection(allNav, navBar)
+                reviewArea.classList.add('hidden');
             }
     
         } else {
             showSection(allNav, navBar)
+            reviewArea.classList.add('hidden');
         }
       
     }
 
     catch(error) {
+        reviewArea.classList.add('hidden');
         console.log(error);
     }
 }
