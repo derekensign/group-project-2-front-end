@@ -201,6 +201,7 @@ h2 {
 .allBusinesses {
     display: flex;
     flex-wrap: wrap;
+    width: 1200px;
 }
 
 .bizTile {
@@ -258,6 +259,7 @@ textarea {
 
 .all-reviews {
     width: 80%;
+  
 }
 
 .nameCard {
