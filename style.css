@@ -250,7 +250,7 @@ textarea {
     margin-bottom: 20px;
 }
 
-.one-review img {
+.one-review > img {
     margin-top: 20px;
     width: 50%;
    
@@ -258,4 +258,17 @@ textarea {
 
 .all-reviews {
     width: 80%;
+}
+
+.nameCard {
+    display: flex;
+    align-items: center;
+}
+
+.nameCard img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
 }

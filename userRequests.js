@@ -33,12 +33,13 @@ const reviewForm = document.querySelector('#review-form');
 
 
 // Creates a user token to be set in local storage
-const createUser = async( name, email, password) => {
+const createUser = async( name, email, password, image) => {
     try {
         const response = await axios.post(`${apiLink}/user`, {
             name,
             email,
-            password
+            password,
+            image
         });
 
         localStorage.setItem('userToken', response.data.userToken);
