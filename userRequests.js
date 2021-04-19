@@ -19,7 +19,17 @@ const businessesContainer = document.querySelector('.businessesContainer')
 const addBizContainer = document.querySelector('.listBizContainer')
 const bizViewContainer = document.querySelector('.bizViewContainer')
 const allSections = document.querySelectorAll('.section');
-const allNav = document.querySelectorAll('.nav')
+const allNav = document.querySelectorAll('.nav');
+const allBusinessesContainer = document.querySelector('.allBusinesses');
+const allReviewsContainer = document.querySelector('.all-reviews');
+
+// Forms
+const loginForm = document.querySelector('.login-form')
+const signupForm = document.querySelector('.signup-form')
+const addBizForm = document.querySelector('.addbiz-form')
+const reviewForm = document.querySelector('#review-form');
+
+
 
 // Creates a user token to be set in local storage
 const createUser = async( name, email, password) => {
