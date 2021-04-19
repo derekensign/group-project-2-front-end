@@ -1,27 +1,3 @@
-// // Nav Links
-// const homeNav = document.querySelector('#home-link')
-// const businessNav = document.querySelector('#business-link')
-// const signNav = document.querySelector('#signup-link')
-// const loginNav = document.querySelector('#login-link')
-// const logoutNav = document.querySelector('#logout-link')
-// const addbizNav = document.querySelector('#addbiz-link')
-
-// // Sections
-// const loginContainer = document.querySelector('.loginContainer')
-// const searchContainer = document.querySelector('.searchContainer')
-// const signupContainer = document.querySelector('.signupContainer')
-// const businessesContainer = document.querySelector('.businessesContainer')
-// const addBizContainer = document.querySelector('.listBizContainer')
-// const bizViewContainer = document.querySelector('.bizViewContainer')
-// const allSections = document.querySelectorAll('.section');
-
-verifyUser();
-
-
-const loginForm = document.querySelector('.login-form')
-const signupForm = document.querySelector('.signup-form')
-const addBizForm = document.querySelector('.addbiz-form')
-
 
 // Show one section
 const showSection = (sectionsToHide, sectionToShow) => {
@@ -33,7 +9,7 @@ const showSection = (sectionsToHide, sectionToShow) => {
 // Event Listeners
 homeNav.forEach((nav) => {
     nav.addEventListener('click', (event) => {
-        getAllBusinesses()
+       showSection(allSections, searchContainer);
     }) 
 })
 
@@ -62,13 +38,13 @@ addbizNav.addEventListener('click', (event) => {
 const getAllBusinesses = async (req,res) => {
 
    
-    while(businessesContainer.firstChild !== null) {
-        businessesContainer.removeChild(businessesContainer.lastChild)
+    while(allBusinessesContainer.firstChild !== null) {
+        allBusinessesContainer.removeChild(allBusinessesContainer.lastChild)
     }
 
     let allBusinesses = await axios.get(`${apiLink}/business`)
 
-    console.log(allBusinesses)
+  
 
     for(let i = 0; i < allBusinesses.data.businesses.length; i++) {
 
@@ -89,15 +65,23 @@ const getAllBusinesses = async (req,res) => {
         newDiv.classList.add("bizTile")
         newDiv.addEventListener('click', async (event) => {
             let oneBusiness = await getOneBusiness(allBusinesses.data.businesses[i].id)
-            console.log(oneBusiness)
+            const businessReviews = await getOneBusinessReviews(allBusinesses.data.businesses[i].id);
 
-            bizViewContainer.removeChild(bizViewContainer.firstChild)
+            createBizView(oneBusiness);
+
+            allReviewsContainer.innerHTML = '';
+
+            for (let i = 0; i < businessReviews.length; i++) {
+                const view = createReviewsView(businessReviews[i]);
+                allReviewsContainer.append(view);
+            }   
+          
 
             showSection(allSections, bizViewContainer)
             
         })
-        console.log(newDiv)
-        businessesContainer.appendChild(newDiv)
+  
+        allBusinessesContainer.appendChild(newDiv)
 
     }
 }
@@ -154,13 +138,55 @@ addBizForm.addEventListener('submit', async (e) => {
     const phone = document.querySelector('#bizNumber').value
     const description = document.querySelector('#bizDescription').value
     const type = document.querySelector('#bizType').value
+    const image = document.querySelector('#bizzImage').value;
 
-    console.log(name, address, phone, description, type)
 
-    const addedBusiness = await addBusiness(name, description, type, phone, null, address)
-    console.log(addedBusiness)
+
+    const addedBusiness = await addBusiness(name, description, type, phone, image, address);
+
 })
 
 
+reviewForm.addEventListener('submit', async(e) => {
+    e.preventDefault();
+    try {
 
-console.log('hello from main');
+        const [headline, comment, image, rating] = e.target.elements;
+        
+        const response = await axios.post(`${apiLink}/business/${e.target.getAttribute('biz-id')}/review`,{
+            headline: headline.value,
+            comment: comment.value,
+            image: image.value,
+            rating: rating.value,
+        },  {
+            headers: {
+                authorization: 'Bearer ' + localStorage.getItem('userToken') 
+            }
+        });
+
+        allReviewsContainer.innerHTML = '';
+
+        const businessReviews = await getOneBusinessReviews(e.target.getAttribute('biz-id'));
+
+
+        
+        for (let i = 0; i < businessReviews.length; i++) {
+            const view = createReviewsView(businessReviews[i]);
+            allReviewsContainer.append(view);
+        }   
+      
+
+
+    }
+    catch(error) {
+        console.log(error);
+    }
+
+
+
+
+
+});
+
+
+verifyUser();

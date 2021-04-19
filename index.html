@@ -23,14 +23,16 @@
                 <span id="business-link" class="nav-link bizTwin">Businesses</span>
                 <span id="signup-link" class="nav-link">Signup</span>
                 <span id="login-link" class="nav-link">Login</span>
-            </nav><br><br><br>
-
+            </nav>
             <nav class="nav loggedLinkBar hidden">
                 <span id="home-link" class="nav-link homeTwin">Home</span>
                 <span id="business-link" class="nav-link bizTwin">Businesses</span>
                 <span id="addbiz-link" class="nav-link">Add a Business</span>
                 <span id="logout-link" class="nav-link">Logout</span>
             </nav>
+            <br><br><br>
+
+     
 
         </div>
         
@@ -101,36 +103,14 @@
 
         </div>
 
-        <div class="section bizViewContainer">
+        <div class="section hidden bizViewContainer">
 
             <div class="basicInfo">
                 
          
 
                 <div class="bizOverlay2">
-                    <div>
-                        <img id="bizImage" src="https://www.bakingbusiness.com/ext/resources/FBN-Features/8/ChilisRestaurant_Lead.jpg?1534346964" alt="Chilis">
-                        <div class="bizOverlay">
-                            <h2>Chili's</h2>
-                            <p>Added by Nick</p>
-                            <p>Restaurant</p>
-
-                            <i class="far fa-star"></i>
-                            <i class="far fa-star"></i>
-                            <i class="far fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-            
-                    <p>1802 Mulberry St.</p>
-                    <p>210-555-8291</p>
-                    <p id=storeInfo>
-                    A delicious restaurant blah blah blah blah blah blah blah 
-                    blah blah blah blah blah 
-                    blah blah blah blah 
-                    blah blah blah blah blah blah blah blah
-                    </p>
+                   
                 </div>
 
             </div>
@@ -139,16 +119,27 @@
                 <h2>Reviews</h2>
                 <p>Add a Review</p>
 
-                <div class="singleReview">
-                    <p>Nick</p>
-                    <h3>A good place to eat</h3>
-                    <p>
-                    A delicious restaurant blah blah blah blah blah blah blah 
-                    blah blah blah blah blah 
-                    blah blah blah blah 
-                    </p>
+
+                <div id="reviewArea">
+                    <form id="review-form">
+                        <input type="text" name="headline" placeholder="headline">
+                        <textarea rows=10 name="comment" placeholder="comments"></textarea>
+                        <input type="text" name="image" placeholder="image">
+                        <input type="number" min=1 max=5 name="review" placeholder="rating">
+                        <input type="submit" value="Add A Review" >
+                   
+                    </form>
 
                 </div>
+
+
+                <div class="all-reviews">
+
+
+
+                </div>
+
+
             </div>
 
         </div>
@@ -166,6 +157,9 @@
 
                 <label for="bizNumber">Phone Number</label>
                 <input type="text" id="bizNumber"><br>
+
+                <label for="bizzImage">Image</label>
+                <input type="text" id="bizzImage"><br>
 
                 <label for="bizDescription">Description</label>
                 <textarea id="bizDescription" placeholder="Enter a description of your business."></textarea><br>
