@@ -98,6 +98,11 @@ const addReview = async (businessId, reviewHeadline, reviewComment, reviewRating
     }
 }
 
+const checkUrl = (url) => {
+    return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
+
+}
+
 
 const createBizView = (oneBusiness) => {
     const bizOverlayTwo = document.createElement('div');
@@ -150,21 +155,34 @@ const createReviewsView = reviews => {
     const reviewDiv = document.createElement('div');
     const comment = document.createElement('p');
     const name = document.createElement('h3');
-    const headline = document.createElement('p');
+    const headline = document.createElement('h3');
     const image = document.createElement('img');
     const ratingDiv = document.createElement('div');
+    const userImage = document.createElement('img');
+    const nameCard = document.createElement('div');
+
+    nameCard.classList.add('nameCard');
+
+    const userImageInfo = reviews.user.image || '';
+
+    console.log(userImageInfo);
+    
+    userImage.src = !checkUrl(userImageInfo) ? 'https://www.pngitem.com/pimgs/m/30-307416_profile-icon-png-image-free-download-searchpng-employee.png': reviews.user.image;
 
 
     name.innerText = reviews.user.name;
     comment.innerText = reviews.comment;
-    headline.innerText = reviews.headline;
-    image.src = reviews.image;
+
+    headline.innerText = 'Headline: ' + reviews.headline;
+    image.src = !checkUrl(reviews.image) ? 'https://image.shutterstock.com/image-vector/ui-image-placeholder-wireframes-apps-260nw-1037719204.jpg': reviews.image
+   
     generateStars(ratingDiv,reviews.rating);
     reviewDiv.classList.add('one-review');
-    
-    reviewDiv.append(name, headline, comment, ratingDiv);
+    nameCard.append(userImage,name);
 
-    if (reviews.image) reviewDiv.append(image);
+    reviewDiv.append(nameCard, headline, comment, ratingDiv);
+
+    if (reviews.image !== '') reviewDiv.append(image);
 
     return reviewDiv;
 };

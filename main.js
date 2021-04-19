@@ -122,8 +122,9 @@ signupForm.addEventListener('submit', async (e) => {
     const name = document.querySelector('#signName').value
     const email = document.querySelector('#signEmail').value
     const password = document.querySelector('#signPass').value
+    const image = document.querySelector('#signImage').value
 
-    await createUser(name, email, password)
+    await createUser(name, email, password, image)
     await verifyUser()
     showSection(allSections,searchContainer)
 
